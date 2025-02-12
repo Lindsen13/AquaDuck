@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: blob_storage
+    meta:
+      external_location: "./../../data/{name}/*/*/*/file.parquet"
+    tables:
+      - name: nordpool_spot_price
+      - name: fixer_exchange_rate

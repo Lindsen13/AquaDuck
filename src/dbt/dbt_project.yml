@@ -1,0 +1,27 @@
+name: 'data_repository_tool'
+version: '1.0.0'
+
+profile: 'data_repository_tool'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  data_repository_tool:
+    input:
+      +materialized: table
+      +schema: input
+    staging:
+      +materialized: view
+      +schema: staging
+    output:
+      +materialized: table
+      +schema: output

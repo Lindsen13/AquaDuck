@@ -1,0 +1,18 @@
+[project]
+name = "drt"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "dbt-core>=1.9.2",
+    "dbt-duckdb>=1.9.1",
+    "duckdb>=1.2.0",
+    "fastparquet>=2024.11.0",
+    "freezegun>=1.5.1",
+    "pandas>=2.2.3",
+    "pyarrow>=19.0.0",
+    "pytest>=8.3.4",
+    "requests>=2.32.3",
+    "responses>=0.25.6",
+]

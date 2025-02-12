@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: avg_spot_price_per_day
+    description: Exchange rate data
+    columns:
+      - name: date
+        description: datetime
+        tests:
+          - not_null
+          - unique:
+              where: country = 'Estonia'
+      - name: country
+        description: The country of the spot price
+        tests:
+          - not_null
+          - accepted_values:
+              values: [Austria, Belgium, Denmark, Estonia, Finland, France, Germany, Lithuania, Latvia, Netherlands, Norway, Poland, Sweden, Romania]
+      - name: avg_price_eur
+        description: Average price in EUR
+        tests:
+          - not_null
+      - name: avg_price_usd
+        description: Average price in USD
+        tests:
+          - not_null
+      - name: rank
+        description: Rank of the country based on spot price for that day
+        tests:
+          - not_null

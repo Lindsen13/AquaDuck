@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.vscode/.env"
+        },
+        {
+            "name": "Run Nordpool Spot Price Script",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/ingest/nordpool/spot_price.py",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.vscode/.env"
+        },
+        {
+            "name": "Run Fixer Exchange Rate Script",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/ingest/fixer/exchange_rate.py",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.vscode/.env"
+        },
+    ]
+}
