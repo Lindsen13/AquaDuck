@@ -10,6 +10,7 @@ dependencies = [
     "duckdb>=1.2.0",
     "fastparquet>=2024.11.0",
     "freezegun>=1.5.1",
+    "gcsfs>=2025.2.0",
     "pandas>=2.2.3",
     "pyarrow>=19.0.0",
     "pytest>=8.3.4",

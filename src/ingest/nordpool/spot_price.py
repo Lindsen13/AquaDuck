@@ -1,8 +1,10 @@
-from src.utils.clients.nordpool import NordPool
 from datetime import datetime
+
+from src.utils.clients.nordpool import NordPool
 from src.utils.storage import store_object
 
-def process_nordpool_spot_price(date: datetime | None = None)-> None:
+
+def process_nordpool_spot_price(date: datetime | None = None) -> None:
     """Process NordPool spot price data"""
     if not date:
         date = datetime.now()
@@ -22,6 +24,7 @@ def process_nordpool_spot_price(date: datetime | None = None)-> None:
                 }
             )
     store_object(data=output, table_name="nordpool_spot_price", date=date)
+
 
 if __name__ == "__main__":
     start = datetime.now()
