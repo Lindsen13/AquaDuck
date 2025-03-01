@@ -4,6 +4,9 @@ data_repository_tool:
       type: duckdb
       path: ../../data/dev.duckdb
       threads: 1
+      filesystems:
+        - fs: gcs
+          anon: false
 
     prod:
       type: duckdb

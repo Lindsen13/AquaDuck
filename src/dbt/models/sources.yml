@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: blob_storage
     meta:
-      external_location: "{% if env_var('PROVIDER') == 'Local' %}../../data/{name}/*/*/*/file.parquet{% elif env_var('PROVIDER') == 'GCP' %}gs://{{ env_var('GCP_BUCKET_NAME') }}/data/{name}/*/*/*/file.parquet{% else %}{name}.parquet{% endif %}"
+      external_location: "{% if env_var('PROVIDER') == 'Local' %}../../data/{name}/**/file.parquet{% elif env_var('PROVIDER') == 'GCP' %}gs://{{ env_var('GCP_BUCKET_NAME') }}/data/{name}/**/file.parquet{% else %}{name}.parquet{% endif %}"
     tables:
       - name: nordpool_spot_price
       - name: fixer_exchange_rate

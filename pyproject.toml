@@ -12,6 +12,7 @@ dependencies = [
     "fastparquet>=2024.11.0",
     "freezegun>=1.5.1",
     "gcsfs>=2025.2.0",
+    "google-cloud-storage>=3.0.0",
     "mypy-boto3>=1.35.70",
     "mypy-boto3-s3>=1.36.15",
     "pandas>=2.2.3",
