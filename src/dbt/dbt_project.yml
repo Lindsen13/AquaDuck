@@ -19,6 +19,7 @@ models:
     input:
       +materialized: table
       +schema: input
+      +pre-hook: ["SET s3_access_key_id='{{ env_var('HMAC_ACCESS_KEY_ID') }}'","SET s3_secret_access_key='{{ env_var('HMAC_SECRET_KEY_VALUE') }}'"]
     staging:
       +materialized: view
       +schema: staging

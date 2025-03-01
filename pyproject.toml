@@ -5,12 +5,15 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "boto3>=1.36.19",
     "dbt-core>=1.9.2",
     "dbt-duckdb>=1.9.1",
     "duckdb>=1.2.0",
     "fastparquet>=2024.11.0",
     "freezegun>=1.5.1",
     "gcsfs>=2025.2.0",
+    "mypy-boto3>=1.35.70",
+    "mypy-boto3-s3>=1.36.15",
     "pandas>=2.2.3",
     "pyarrow>=19.0.0",
     "pytest>=8.3.4",
