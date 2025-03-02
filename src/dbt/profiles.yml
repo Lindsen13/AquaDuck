@@ -7,6 +7,8 @@ data_repository_tool:
       filesystems:
         - fs: gcs
           anon: false
+        - fs: s3
+          anon: false
 
     prod:
       type: duckdb

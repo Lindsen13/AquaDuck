@@ -18,7 +18,7 @@ def store_object(
     elif provider.lower() == "gcp":
         store_object_gcp(df=df, table_name=table_name, date=date, base_dir=base_dir)
     elif provider.lower() == "aws":
-        store_object_aws()
+        store_object_aws(df=df, table_name=table_name, date=date, base_dir=base_dir)
     elif provider.lower() == "azure":
         store_object_azure()
     else:
@@ -47,9 +47,16 @@ def store_object_gcp(
     df.to_parquet(f"gs://{bucket_name}/{directory}/file.parquet", index=False)
 
 
-def store_object_aws() -> None:
+def store_object_aws(
+    df: pd.DataFrame, table_name: str, date: datetime, base_dir: str
+) -> None:
     """Store object in parquet format, in Amazon Web Services"""
-    raise NotImplementedError
+    bucket_name = os.environ.get("AWS_BUCKET_NAME")
+    if not bucket_name:
+        raise ValueError("Please set the AWS_BUCKET_NAME environment variable")
+    base_dir = base_dir.split("./")[-1]
+    directory = f"{base_dir}/{table_name}/{date.year}/{date.month}/{date.day}"
+    df.to_parquet(f"s3://{bucket_name}/{directory}/file.parquet", index=False)
 
 
 def store_object_azure() -> None:
