@@ -18,3 +18,4 @@ src/dbt/logs/
 # Other
 data/
 .DS_Store
+*.duckdb

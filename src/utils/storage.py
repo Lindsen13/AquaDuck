@@ -2,6 +2,8 @@ import os
 from datetime import datetime
 
 import pandas as pd
+from adlfs import AzureBlobFileSystem
+from azure.identity.aio import DefaultAzureCredential
 
 
 def store_object(
@@ -20,7 +22,7 @@ def store_object(
     elif provider.lower() == "aws":
         store_object_aws(df=df, table_name=table_name, date=date, base_dir=base_dir)
     elif provider.lower() == "azure":
-        store_object_azure()
+        store_object_azure(df=df, table_name=table_name, date=date, base_dir=base_dir)
     else:
         raise ValueError(f"Invalid provider {provider=}")
 
@@ -59,6 +61,18 @@ def store_object_aws(
     df.to_parquet(f"s3://{bucket_name}/{directory}/file.parquet", index=False)
 
 
-def store_object_azure() -> None:
+def store_object_azure(
+    df: pd.DataFrame, table_name: str, date: datetime, base_dir: str
+) -> None:
     """Store object in parquet format, in Microsoft Azure"""
-    raise NotImplementedError
+    account_name = os.environ.get("AZURE_ACCOUNT_NAME")
+    if not account_name:
+        raise ValueError("Please set the AZURE_ACCOUNT_NAME environment variable")
+    base_dir = base_dir.split("./")[-1]
+    directory = f"{base_dir}/{table_name}/{date.year}/{date.month}/{date.day}"
+
+    credential = DefaultAzureCredential()
+    fs = AzureBlobFileSystem(
+        account_name=account_name, credential=credential, async_mode=False
+    )
+    df.to_parquet(f"{directory}/file.parquet", index=False, filesystem=fs)

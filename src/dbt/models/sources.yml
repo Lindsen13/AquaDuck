@@ -10,6 +10,8 @@ sources:
         gs://{{ env_var('GCP_BUCKET_NAME') }}/data/{name}/**/file.parquet
         {%- elif env_var('PROVIDER') == 'AWS' -%}
         s3://{{ env_var('AWS_BUCKET_NAME') }}/data/{name}/**/file.parquet
+        {%- elif env_var('PROVIDER') == 'AZURE' -%}
+        https://{{ env_var('AZURE_ACCOUNT_NAME') }}.blob.core.windows.net/data/{name}/**/file.parquet
         {%- else -%}
         {name}.parquet
         {%- endif %}

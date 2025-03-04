@@ -1,18 +1,27 @@
 data_repository_tool:
   outputs:
-    dev:
+    dev-gcp:
       type: duckdb
-      path: ../../data/dev.duckdb
+      path: ../../dev.duckdb
       threads: 1
       filesystems:
         - fs: gcs
           anon: false
+    dev-aws:
+      type: duckdb
+      path: ../../dev.duckdb
+      threads: 1
+      filesystems:
         - fs: s3
           anon: false
-
-    prod:
+    dev-azure:
       type: duckdb
-      path: ../../data/prod.duckdb
-      threads: 4
-
-  target: dev
+      path: ../../dev.duckdb
+      threads: 1
+      azure_credentials:
+        client_id: "{{ env_var('AZURE_CLIENT_ID') }}"
+        tenant_id: "{{ env_var('AZURE_TENANT_ID') }}"
+        client_secret: "{{ env_var('AZURE_CLIENT_SECRET') }}"
+      azure_storage_account_name: "kkvingestiondev"
+      azure_container_name: "data"
+  target: dev-azure
