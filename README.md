@@ -12,6 +12,30 @@
 - **DBT Integration**: Transforms data with DBT, enabling data lineage, data tests and orchestration
 - **CI/CD Ready**: Automate deployments with GitHub Actions.
 
+## Infrastructure
+
+```mermaid
+flowchart LR
+    subgraph dbt["DBT"]
+        output["output"]
+        staging["staging"]
+        input["input"]
+    end
+    subgraph ingestion["Ingestion"]
+        ingestion_1["Spot Prices"]
+        ingestion_2["Exchange Rates"]
+        ingestion_3["Other Ingestion"]
+        ingestion_4["Other Ingestion"]
+    end
+
+    cloud_bucket["Cloud Bucket - Data"]
+    duckdb["Cloud Bucket - DuckDB"]
+
+    input --> staging --> output
+    
+    ingestion --> cloud_bucket --> dbt --> duckdb 
+```
+
 ## Installation
 
 ### Prerequisites
