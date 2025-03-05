@@ -1,7 +1,7 @@
 [project]
-name = "drt"
+name = "AquaDuck"
 version = "0.1.0"
-description = "Add your description here"
+description = "**AquaDuck** is a streamlined data processing framework for ingesting and processing data on your favourite cloud vendor!"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
