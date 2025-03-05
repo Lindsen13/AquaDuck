@@ -2,7 +2,7 @@
 
 ## Overview
 
-**AquaDuck** is a streamlined data processing framework for ingesting and processing data on your favourite cloud vendor! We currently support **AWS, GCP, and Azure**. Designed for flexibility and performance, DRT leverages **DuckDB** and **DBT** to ensure a fast and robust processing of data.
+**AquaDuck** is a streamlined data processing framework for ingesting and processing data on your favourite cloud vendor! We currently support **AWS, GCP, and Azure**. Designed for flexibility and performance, AquaDuck leverages **DuckDB** and **DBT** to ensure a fast and robust processing of data.
 
 ## Features
 
@@ -24,8 +24,8 @@
 
 ```sh
 # Clone the repository
-git clone https://github.com/Lindsen13/DRT.git
-cd DRT
+git clone https://github.com/Lindsen13/AquaDuck.git
+cd AquaDuck
 
 # Create a virtual environment and install dependencies
 python -m venv venv
@@ -63,7 +63,7 @@ dbt build
 
 ### Deploying to Cloud
 
-DRT is designed to run on **one** of the supported cloud platforms. Choose your target platform and follow the instructions below.
+AquaDuck is designed to run on **one** of the supported cloud platforms. Choose your target platform and follow the instructions below.
 
 #### Google Cloud Platform (GCP)
 
