@@ -1,4 +1,5 @@
 # AquaDuck
+![AquaDuck Banner](docs/AquaDuck.PNG)
 
 ## Overview
 
