@@ -7,11 +7,11 @@
 
 ## Features
 
-- **Data Ingestion**: Using python to connect to APIs, flat files and more
-- **Data Storage**: Store data loclaly, in a storage bucket on GCP, in a S3 bucket in AWS or in a storage container on Azure
-- **Cloud-Native**: Supports deployment to Google Cloud, AWS, and Azure.
-- **DBT Integration**: Transforms data with DBT, enabling data lineage, data tests and orchestration
-- **CI/CD Ready**: Automate deployments with GitHub Actions.
+🚀 **Cloud-Native** – Seamlessly deploy to **Google Cloud, AWS, and Azure**.  
+🔗 **Data Ingestion** – Connect to **APIs, flat files, and more** with Python.  
+💾 **Flexible Data Storage** – Store data **locally**, in **GCP Buckets, AWS S3, or Azure Containers**.  
+⚡ **DBT Integration** – Transform and manage data with **DBT**, including **data lineage, tests, and orchestration**.  
+🤖 **CI/CD Ready** – Automate deployments with **GitHub Actions** for a smooth workflow.  
 
 ## Infrastructure
 
