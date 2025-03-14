@@ -140,11 +140,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [AWS](https://aws.amazon.com/)
 - [Microsoft Azure](https://azure.microsoft.com/)
 
-## TODO:
+## ToDo:
 - Testing on Azure
 - Testing on AWS
 - Script to upload duckdb file to cloud vendor
     - Should this be an overwrite, or an additional file?
+- Add ruff, mypy and pytest on pre-commit
+    - consider to run this on PR instead?
 - Docker container to:
     - Run ingestions
     - Run DBT
