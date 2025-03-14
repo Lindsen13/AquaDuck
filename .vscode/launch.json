@@ -11,7 +11,7 @@
             "env": {
                 "PYTHONPATH": "${workspaceFolder}/"
             },
-            "envFile": "${workspaceFolder}/.vscode/.env"
+            "envFile": "${workspaceFolder}/.env"
         },
         {
             "name": "Run Nordpool Spot Price Script",
@@ -23,7 +23,7 @@
             "env": {
                 "PYTHONPATH": "${workspaceFolder}/"
             },
-            "envFile": "${workspaceFolder}/.vscode/.env"
+            "envFile": "${workspaceFolder}/.env"
         },
         {
             "name": "Run Fixer Exchange Rate Script",
@@ -35,7 +35,7 @@
             "env": {
                 "PYTHONPATH": "${workspaceFolder}/"
             },
-            "envFile": "${workspaceFolder}/.vscode/.env"
+            "envFile": "${workspaceFolder}/.env"
         },
     ]
 }

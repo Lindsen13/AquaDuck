@@ -1,8 +1,11 @@
 from datetime import datetime
 
+from dotenv import load_dotenv
+
 from src.utils.clients.nordpool import NordPool
 from src.utils.storage import store_object
 
+load_dotenv()
 
 def process_nordpool_spot_price(date: datetime | None = None) -> None:
     """Process NordPool spot price data"""

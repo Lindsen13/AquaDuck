@@ -6,9 +6,12 @@ dist/
 wheels/
 *.egg-info
 
+# Vscode stuff
+.vscode/
+
 # Virtual environments
 .venv
-.vscode/.env
+venv/
 
 # DBT
 src/dbt/target/
@@ -19,3 +22,5 @@ src/dbt/logs/
 data/
 .DS_Store
 *.duckdb
+.env
+*.log

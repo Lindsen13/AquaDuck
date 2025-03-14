@@ -53,10 +53,10 @@ git clone https://github.com/Lindsen13/AquaDuck.git
 cd AquaDuck
 
 # Create a virtual environment and install dependencies
-python -m venv venv
+uv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
-uv pip install -r pyproject.toml
+uv pip install .
 ```
 
 ### Environment Configuration
@@ -65,16 +65,23 @@ Before running the tool, ensure you have the correct environment variables set:
 
 ```sh
 # Copy the example environment file
-cp .vscode/.example.env .vscode/.env
+cp .example.env .env
 ```
 
-Modify `.vscode/.env` to match your specific cloud configuration. All the scripts in this repository will refer to the environmentals dynamically.
+Modify `.env` to match your specific cloud configuration. All the scripts in this repository will refer to the environmentals dynamically.
+
+### Tests
+
+Run the entire test suite:
+
+dotenv run pytest
 
 ## Usage
 
 ### Running Ingestions
 
 ```sh
+export PYTHONPATH=$(pwd)/src:
 python src/ingest/nordpool/spot_price.py
 python src/ingest/fixer/exchange_rate.py
 ```
@@ -83,8 +90,10 @@ python src/ingest/fixer/exchange_rate.py
 
 ```sh
 cd src/dbt
-dbt build
+dotenv -f ../../.env run dbt build --target dev-gcp
 ```
+
+Where the target can be one of the targets specified in `src/dbt/profiles.yml`. Alternatively, you can set a default profile there as well.
 
 ### Deploying to Cloud
 

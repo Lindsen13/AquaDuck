@@ -1,6 +1,11 @@
-from src.utils.clients.fixer import Fixer
 from datetime import datetime
+
+from dotenv import load_dotenv
+
+from src.utils.clients.fixer import Fixer
 from src.utils.storage import store_object
+
+load_dotenv()
 
 def process_fixer_exchange_rate(date: datetime | None = None)-> None:
     """Process Fixer Exchange Rates data"""
