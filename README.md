@@ -140,3 +140,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [AWS](https://aws.amazon.com/)
 - [Microsoft Azure](https://azure.microsoft.com/)
 
+## TODO:
+- Testing on Azure
+- Testing on AWS
+- Script to upload duckdb file to cloud vendor
+    - Should this be an overwrite, or an additional file?
+- Docker container to:
+    - Run ingestions
+    - Run DBT
+    - Run post-processing
+- Github Action deployment to:
+    - AWS
+    - GCP
+    - Azure
