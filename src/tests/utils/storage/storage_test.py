@@ -82,15 +82,69 @@ def test_store_object_gcp() -> None:
     )
 
 
+def test_store_object_gcp_missing_bucket_name() -> None:
+    """Test store_object_gcp function"""
+    with (
+        patch.dict(os.environ, {"GCP_BUCKET_NAME": ""}),
+        pytest.raises(
+            ValueError, match="Please set the GCP_BUCKET_NAME environment variable"
+        ),
+    ):
+        store_object_gcp(MagicMock(), "", MagicMock(), "")
+
+
+@freeze_time("2025-01-01")
 def test_store_object_aws() -> None:
     """Test store_object_aws function"""
-    pass
-    #with pytest.raises(NotImplementedError):
-    #    store_object_gcp(MagicMock(), MagicMock(), MagicMock(),MagicMock())
+    data = MagicMock()
+    table_name = "table1"
+    date = datetime.now()
+
+    with patch.dict(os.environ, {"AWS_BUCKET_NAME": "bucket"}):
+        store_object_aws(data, table_name, date, base_dir="./data")
+
+    data.to_parquet.assert_called_once_with(
+        "s3://bucket/data/table1/2025/1/1/file.parquet", index=False
+    )
 
 
+def test_store_object_aws_missing_bucket_name() -> None:
+    """Test store_object_aws function"""
+    with (
+        patch.dict(os.environ, {"AWS_BUCKET_NAME": ""}),
+        pytest.raises(
+            ValueError, match="Please set the AWS_BUCKET_NAME environment variable"
+        ),
+    ):
+        store_object_aws(MagicMock(), "", MagicMock(), "")
+
+
+@freeze_time("2025-01-01")
 def test_store_object_azure() -> None:
     """Test store_object_azure function"""
-    pass
-    #with pytest.raises(NotImplementedError):
-    #   store_object_azure(MagicMock(), MagicMock(), MagicMock(),MagicMock())
+    data = MagicMock()
+    table_name = "table1"
+    date = datetime.now()
+    with (
+        patch.dict(os.environ, {"AZURE_ACCOUNT_NAME": "account_name"}),
+        patch("src.utils.storage.DefaultAzureCredential"),
+        patch("src.utils.storage.AzureBlobFileSystem") as mock_azure_blob_file_system,
+    ):
+        store_object_azure(data, table_name, date, "./data")
+
+    data.to_parquet.assert_called_once_with(
+        "data/table1/2025/1/1/file.parquet",
+        index=False,
+        filesystem=mock_azure_blob_file_system.return_value,
+    )
+
+
+def test_store_object_azure_missing_bucket_name() -> None:
+    """Test store_object_azure function"""
+    with (
+        patch.dict(os.environ, {"AZURE_ACCOUNT_NAME": ""}),
+        pytest.raises(
+            ValueError, match="Please set the AZURE_ACCOUNT_NAME environment variable"
+        ),
+    ):
+        store_object_azure(MagicMock(), "", MagicMock(), "")
